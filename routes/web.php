@@ -19,7 +19,7 @@ use App\Http\Controllers\OrderController;
 Route::get('/', HomeController::class);
 
 // RUTA PARA VER LAS ÓRDENES CREADAS
-Route::get('orders', [OrderController::class, 'create'])->name('orders.index');
+Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 
 // RUTA PARA CREAR UNA NUEVA ORDEN
 Route::get('orders/create', [OrderController::class, 'create'])->name('orders.create');

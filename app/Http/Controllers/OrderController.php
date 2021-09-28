@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function index() {
-        return "Pagina donde se muestran las ordenes";
+        $order = Order::first();
+
+        return $order->pizza;
+        return view('orders.index');
     }
     public function create() { 
-        return "Pagina donde se crean las ordenes";
+        return view('orders.create');
     }
     public function show() {
-        return "Pagina donde se muestra una orden individualmente";
+        return view('orders.show');
     }
 }
