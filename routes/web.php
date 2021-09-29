@@ -29,3 +29,6 @@ Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 
 // RUTA PARA VER UNA ORDEN DE MANERA INDIVIDUAL
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+// RUTA PARA VER LAS PIZZAS
+Route::get('pizza', PizzaController::class);

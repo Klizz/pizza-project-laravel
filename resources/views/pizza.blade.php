@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Pizza Project</title>
+    <title>Pizza Project</title>
 </head>
 <body>
-    <h1>Aqui se muestran la orden <?php echo $order ?></h1>
+    
 </body>
 </html>

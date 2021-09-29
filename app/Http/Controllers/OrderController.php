@@ -7,15 +7,17 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index() {
-        $order = Order::first();
-
-        return $order->pizza;
+        $order = Order::all();
+        // $pizza =  $order->pizza;
+        // $ingredients = $order->ingredients;
+        // return $order;
+        return response()->json($order);
         return view('orders.index');
     }
     public function create() { 
         return view('orders.create');
     }
-    public function show() {
-        return view('orders.show');
-    }
+    // public function show($order) {
+    //     return view('orders.show', compact('order'));
+    // }
 }

@@ -10,7 +10,10 @@ class OrderPizzaIngredient extends Model
     use HasFactory;
     protected $fillable = ['order_id', 'ingredient_id'];
 
-    public function ingredients(){
-        return $this->hasMany(Ingredient::class);
+    public function ingredient(){
+        return $this->belongsTo(Ingredient::class);
+    }
+    public function order(){
+        return $this->belongsTo(Order::class);
     }
 }
