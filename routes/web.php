@@ -31,4 +31,7 @@ Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
 
 // RUTA PARA VER LAS PIZZAS
-Route::get('pizza', PizzaController::class);
+Route::get('pizza', \App\Http\Controllers\PizzaController::class);
+
+// RUTA PARA VER LAS PIZZAS
+Route::get('ingredients', \App\Http\Controllers\IngredientController::class);

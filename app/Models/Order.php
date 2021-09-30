@@ -13,10 +13,6 @@ class Order extends Model
     public function pizza(){
         return $this->belongsTo(Pizza::class);
     }
-
-    // public function order_pizza_ingredients(){
-    //     return $this->hasMany(OrderPizzaIngredient::class);
-    // }
     public function ingredients(){
         return $this-> belongsToMany(Ingredient::class, 'order_pizza_ingredients', 'order_id', 'ingredient_id');
     }
