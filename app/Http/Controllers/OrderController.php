@@ -22,4 +22,7 @@ class OrderController extends Controller
     public function create() { 
         return view('orders.create');
     }
+    public function all() { 
+        return view('orders.all');
+    }
 }

@@ -8,11 +8,6 @@ use App\Http\Controllers\OrderController;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 // RUTA HOME
@@ -24,6 +19,9 @@ Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 // RUTA PARA CREAR UNA NUEVA ORDEN
 Route::get('orders/create', [OrderController::class, 'create'])->name('orders.create');
 
+// RUTA PARA CREAR UNA NUEVA ORDEN
+Route::get('orders/all', [OrderController::class, 'all'])->name('orders.all');
+
 // RUTA PARA POSTEAR EL FORMULARIO
 Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
 
@@ -33,5 +31,5 @@ Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.sh
 // RUTA PARA VER LAS PIZZAS
 Route::get('pizza', \App\Http\Controllers\PizzaController::class);
 
-// RUTA PARA VER LAS PIZZAS
+// RUTA PARA VER LOS INGREDIENTES
 Route::get('ingredients', \App\Http\Controllers\IngredientController::class);
