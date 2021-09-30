@@ -9,10 +9,9 @@
 
 </head>
 <body>
-    <h1>The Pizza Project</h1>
-    <div id="example">
+    <div id="createPizza">
     <!-- React JS -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/createPizza.js') }}" defer></script>
     </div>
 </body>
 </html>

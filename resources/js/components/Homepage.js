@@ -1,24 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-function Homepage() {
+function HomepageComponent() {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">Hola</div>
-
-                        <div className="card-body">
-                            Soy la pagina homepage
-                        </div>
-                    </div>
-                </div>
+        <div className="hero">
+            <div className="hero-inner">
+                <span className="main-line">The Pizza project</span>
+                <a href="/orders/create"><button className="cta-btn">Start creating your pizza!</button></a>
             </div>
         </div>
     );
 }
 
-export default Homepage;
-
-ReactDOM.render(<Homepage />, document.getElementById('homepage'));
+export default HomepageComponent;

@@ -1,0 +1,39 @@
+.hero {
+    height: 100vh;
+    display: flex;
+    padding-left: 30px;
+    background-image: linear-gradient(
+            to right,
+            rgba(180, 68, 24, 0.8),
+            rgb(241, 180, 47, 0.8)
+        ),
+        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.hero-inner {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+.main-line {
+    color: #fff;
+    font-size: 7em;
+    font-family: "Grand Hotel", cursive;
+    font-weight: 600;
+}
+.cta-btn {
+    margin-top: 30px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 20px 30px;
+    font-weight: 600;
+    font-size: 1.4em;
+    transition: 0.3s;
+}
+.cta-btn:hover {
+    background-color: #FFF;
+    transition: 0.3s;
+}

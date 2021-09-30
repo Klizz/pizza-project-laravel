@@ -18,7 +18,7 @@ function Example() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">User List : CodeCheef</div>
+                        <div className="card-header">Lista de pizzas</div>
                         <div className="card-body">
                             {data ? <h1>{data.pizzas[0].doughtype}</h1> : <h1>loading</h1>}
                         </div>
