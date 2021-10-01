@@ -23,7 +23,7 @@ Route::get('orders/create', [OrderController::class, 'create'])->name('orders.cr
 Route::get('orders/all', [OrderController::class, 'all'])->name('orders.all');
 
 // RUTA PARA POSTEAR EL FORMULARIO
-Route::post('orders', [OrderController::class, 'store'])->name('orders.store');
+Route::post('/order/store', [OrderController::class, 'store'])->name('orders.store');
 
 // RUTA PARA VER UNA ORDEN DE MANERA INDIVIDUAL
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');

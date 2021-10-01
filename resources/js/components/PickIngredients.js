@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from "react";
-import Spinner from 'react-bootstrap/Spinner';
 
-function PickDoughtype() {
-    const [ingredients, setIngredients] = useState();
+const PickIngredients = ({setIngredients, ingredientList, selectedIngredients}) => {
+    const ingredients = ingredientList
 
-    useEffect(() => {
-        const url = "/ingredients";
-
-        const fetchData = async () => {
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-                setIngredients(json);
-            } catch (error) {
-                console.log("error", error);
-            }
-        };
-        fetchData();
-    }, []);
-
+    const onInputChange = (e, item) => {
+        if (e.target.checked) {
+            setIngredients(selectedIngredients.concat([item]))
+        } else {
+            setIngredients(selectedIngredients.filter(i => i.id !== item.id))
+        }
+    }
     return (
         <React.Fragment>
             <div className="form-section" id="ingredients">
             <div className="section-content">
-            <h3>Paso 2: Elige tus ingredientes</h3>
-                {ingredients
-                    ? ingredients.map((item, index) => {
+            <h3 className="section-title">Step 3: Choose your toppings</h3>
+                {ingredients.map((item, index) => {
                           return (
                               <div key={index} className="form-check">
                                   <input
@@ -33,6 +23,7 @@ function PickDoughtype() {
                                       type="checkbox"
                                       value={item.name}
                                       id={item.name}
+                                      onChange={(e) => onInputChange(e, item)}
                                   />
                                   <label
                                       className="form-check-label"
@@ -42,13 +33,11 @@ function PickDoughtype() {
                                   </label>
                               </div>
                           );
-                      })
-                    : <Spinner animation="border" variant="danger" />
-                    }
+                      })}
                 </div>
             </div>
         </React.Fragment>
     );
 }
 
-export default PickDoughtype;
+export default PickIngredients;

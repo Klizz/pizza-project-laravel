@@ -19,6 +19,7 @@
     text-align: center;
 }
 .main-line {
+    display: block;
     color: #fff;
     font-size: 7em;
     font-family: "Grand Hotel", cursive;
@@ -37,19 +38,38 @@
     background-color: #FFF;
     transition: 0.3s;
 }
+.title {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 4.5em;
+    font-weight: 600;
+    color:#6D6D04;
+}
+.section-title {
+    font-weight: 600;
+    color: #B44418;
+}
 .form-section {
     margin-top: 30px;
     font-size: 1.4em;
     padding: 30px;
+    background-color: #f5f3f0;
 }
 
 .continue {
     margin-top: 30px;
+    margin-bottom: 80px;
     background-color: transparent;
-    border: 1px solid rgba(180, 68, 24);
-    padding: 20px 30px;
+    border: 1px solid #B44418;
+    padding: 20px 100px;
     font-weight: 600;
     font-size: 1.4em;
+    transition: 0.3s;
+}
+.continue:hover {
+    background-color: #B44418;
+    transition: 0.3s;
+    color: #FFF;
 }
 .section-content {
     width: 50%;
@@ -58,4 +78,14 @@
 
 .align-center {
     text-align: center;
+}
+
+.navbar-brand {
+    margin-left: 30px;
+}
+.navbar {
+    background-color: #B44418 !important;
+}
+.navbar a {
+    color: white;
 }

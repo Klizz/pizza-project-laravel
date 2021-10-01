@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 
 function Header() {
     return (
-        <nav className="header">
-            Pizza project
+        <nav className="navbar">
+            <a className="navbar-brand" href="/">
+                The Pizza Project
+            </a>
         </nav>
     );
 }
