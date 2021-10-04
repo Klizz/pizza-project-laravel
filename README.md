@@ -1,5 +1,5 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-<p align="center"><a href="https://es.reactjs.org/" target="_blank"><img src="https://seeklogo.net/wp-content/uploads/2020/09/react-logo-512x512.png" width="400"></a></p>
+<p align="center"><a href="https://es.reactjs.org/" target="_blank"><img src="https://seeklogo.net/wp-content/uploads/2020/09/react-logo-512x512.png" width="200"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
