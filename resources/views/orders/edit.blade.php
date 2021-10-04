@@ -10,9 +10,9 @@
 </head>
 
 <body>
-    <div id="details">
+    <div id="edit">
         <!-- React JS -->
-        <script src="{{ asset('js/orderDetails.js') }}" defer></script>
+        <script src="{{ asset('js/editOrder.js') }}" defer></script>
     </div>
 </body>
 

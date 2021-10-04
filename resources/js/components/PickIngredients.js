@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const PickIngredients = ({setIngredients, ingredientList, selectedIngredients}) => {
+const PickIngredients = ({setIngredients, ingredientList, selectedIngredients, defaultSelect}) => {
     const ingredients = ingredientList
 
     const onInputChange = (e, item) => {
@@ -10,6 +10,7 @@ const PickIngredients = ({setIngredients, ingredientList, selectedIngredients}) 
             setIngredients(selectedIngredients.filter(i => i.id !== item.id))
         }
     }
+
     return (
         <React.Fragment>
             <div className="form-section" id="ingredients">
@@ -23,6 +24,9 @@ const PickIngredients = ({setIngredients, ingredientList, selectedIngredients}) 
                                       type="checkbox"
                                       value={item.name}
                                       id={item.name}
+                                      defaultChecked={
+                                        selectedIngredients.find(i => i.id === item.id)
+                                      }
                                       onChange={(e) => onInputChange(e, item)}
                                   />
                                   <label

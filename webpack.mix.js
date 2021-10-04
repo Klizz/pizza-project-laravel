@@ -16,7 +16,6 @@ const mix = require('laravel-mix');
 //     .sass('resources/sass/app.scss', 'public/css');
 
 
-mix.js('resources/js/create.js', 'public/js')
+mix.js('resources/js/showOrders.js', 'public/js')
     .react()
     .sass('resources/sass/app.scss', 'public/css');
-

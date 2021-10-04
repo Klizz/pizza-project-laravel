@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PickDoughtype = ({ doughTypes, setDoughType }) => {
+const PickDoughtype = ({ doughTypes, setDoughType, doughType }) => {
     return (
         <React.Fragment>
             <div className="form-section" id="doughtype">
@@ -15,6 +15,7 @@ const PickDoughtype = ({ doughTypes, setDoughType }) => {
                                             className="form-check-input"
                                             type="radio"
                                             name="doughtype"
+                                            defaultChecked={index === doughType.id - 1}
                                             onChange={() => setDoughType(item)}
                                         />
                                         <label

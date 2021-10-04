@@ -3,10 +3,18 @@ import ReactDOM from "react-dom";
 
 function Header() {
     return (
-        <nav className="navbar">
+        <nav className="navbar navbar-expand-lg">
             <a className="navbar-brand" href="/">
                 The Pizza Project
             </a>
+            <ul class="navbar-nav mr-auto">
+      <li className="nav-item">
+        <a className="nav-link" href="/orders/all">See orders</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="/orders/create">Create order</a>
+      </li>
+    </ul>
         </nav>
     );
 }

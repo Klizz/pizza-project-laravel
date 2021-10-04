@@ -2094,16 +2094,16 @@ function Header() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
       "class": "navbar-nav mr-auto",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-        "class": "nav-item",
+        className: "nav-item",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          "class": "nav-link",
+          className: "nav-link",
           href: "/orders/all",
           children: "See orders"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-        "class": "nav-item",
+        className: "nav-item",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          "class": "nav-link",
+          className: "nav-link",
           href: "/orders/create",
           children: "Create order"
         })
@@ -2134,7 +2134,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NameComponent(_ref) {
-  var setName = _ref.setName;
+  var setName = _ref.setName,
+      defaultValue = _ref.defaultValue;
   // const [name, setName] = useState();
   // const onNameChange = (e) => {
   //     setName(e.target.value);
@@ -2150,6 +2151,7 @@ function NameComponent(_ref) {
           children: "Step 1: Write your name"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           type: "text",
+          defaultValue: defaultValue,
           onChange: function onChange(e) {
             return setName(e.target.value);
           }
@@ -2182,7 +2184,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var PickDoughtype = function PickDoughtype(_ref) {
   var doughTypes = _ref.doughTypes,
-      setDoughType = _ref.setDoughType;
+      setDoughType = _ref.setDoughType,
+      doughType = _ref.doughType;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "form-section",
@@ -2200,6 +2203,7 @@ var PickDoughtype = function PickDoughtype(_ref) {
                 className: "form-check-input",
                 type: "radio",
                 name: "doughtype",
+                defaultChecked: index === doughType.id - 1,
                 onChange: function onChange() {
                   return setDoughType(item);
                 }
@@ -2243,7 +2247,8 @@ __webpack_require__.r(__webpack_exports__);
 var PickIngredients = function PickIngredients(_ref) {
   var setIngredients = _ref.setIngredients,
       ingredientList = _ref.ingredientList,
-      selectedIngredients = _ref.selectedIngredients;
+      selectedIngredients = _ref.selectedIngredients,
+      defaultSelect = _ref.defaultSelect;
   var ingredients = ingredientList;
 
   var onInputChange = function onInputChange(e, item) {
@@ -2273,6 +2278,9 @@ var PickIngredients = function PickIngredients(_ref) {
               type: "checkbox",
               value: item.name,
               id: item.name,
+              defaultChecked: selectedIngredients.find(function (i) {
+                return i.id === item.id;
+              }),
               onChange: function onChange(e) {
                 return onInputChange(e, item);
               }
@@ -2292,10 +2300,10 @@ var PickIngredients = function PickIngredients(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/create.js":
-/*!********************************!*\
-  !*** ./resources/js/create.js ***!
-  \********************************/
+/***/ "./resources/js/editOrder.js":
+/*!***********************************!*\
+  !*** ./resources/js/editOrder.js ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2346,49 +2354,66 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Create() {
+function Edit() {
   // DATOS DEL FORMULARIO
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      name = _useState2[0],
-      setName = _useState2[1];
+      data = _useState2[0],
+      setData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      doughType = _useState4[0],
-      setDoughType = _useState4[1];
+      name = _useState4[0],
+      setName = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
-    price: 0,
-    id: 0
-  }]),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
       _useState6 = _slicedToArray(_useState5, 2),
-      selectedIngredients = _useState6[0],
-      setSelectedIngredients = _useState6[1];
+      doughType = _useState6[0],
+      setDoughType = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
       _useState8 = _slicedToArray(_useState7, 2),
-      ingredients = _useState8[0],
-      setIngredients = _useState8[1];
+      selectedIngredients = _useState8[0],
+      setSelectedIngredients = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
       _useState10 = _slicedToArray(_useState9, 2),
-      pizzas = _useState10[0],
-      setPizzas = _useState10[1];
+      defaultIngredients = _useState10[0],
+      setDefaultIngredients = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState12 = _slicedToArray(_useState11, 2),
-      doughPrice = _useState12[0],
-      setDoughPrice = _useState12[1];
+      ingredients = _useState12[0],
+      setIngredients = _useState12[1];
 
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState14 = _slicedToArray(_useState13, 2),
-      ingredientsPrice = _useState14[0],
-      setIngredientsPrice = _useState14[1];
+      pizzas = _useState14[0],
+      setPizzas = _useState14[1];
 
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+      _useState16 = _slicedToArray(_useState15, 2),
+      ingredientsPrice = _useState16[0],
+      setIngredientsPrice = _useState16[1];
+
+  var url = window.location.href;
+  var currentOrder = url.split("/").pop();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var ingredientsURL = "/ingredients";
     var pizzasURL = "/pizza";
+    fetch("/orders/" + currentOrder, {
+      headers: {
+        Accept: "application/json"
+      }
+    }).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      setData(data);
+      setName(data.customer);
+      setDoughType(data.pizza);
+      setSelectedIngredients(data.ingredients);
+      setDefaultIngredients(data.ingredients);
+    });
 
     var fetchData = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(url, setResult) {
@@ -2433,14 +2458,6 @@ function Create() {
     fetchData(ingredientsURL, setIngredients);
     fetchData(pizzasURL, setPizzas);
   }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    doughType ? setDoughPrice(doughType.price) : console.log("empty");
-    selectedIngredients ? setIngredientsPrice(selectedIngredients.map(function (item) {
-      return item.price;
-    }).reduce(function (prev, next) {
-      return prev + next;
-    })) : console.log("empty");
-  }, [doughType, selectedIngredients, setName]);
 
   function sendData() {
     return _sendData.apply(this, arguments);
@@ -2452,12 +2469,16 @@ function Create() {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_2___default().post("/order/store", {
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_2___default().put("/order/edit/" + data.id, {
                 customer: name,
                 pizza_id: doughType.id,
-                ingredient_id: selectedIngredients
+                ingredient_id: selectedIngredients,
+                removeElements: defaultIngredients.filter(function (x) {
+                  return !selectedIngredients.includes(x);
+                }).map(function (x) {
+                  return x.id;
+                })
               }).then(function (res) {
-                // console.log(res)
                 window.location.href = "/orders/".concat(res.data.id);
               })["catch"](function (err) {
                 console.log(err);
@@ -2476,21 +2497,23 @@ function Create() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
       className: "container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
         className: "title",
-        children: "Create your pizza"
+        children: ["Edit order ", currentOrder]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         method: "POST",
         action: "/or",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Name__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          setName: setName
-        }), pizzas ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [data ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Name__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          setName: setName,
+          defaultValue: name
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {}), setDoughType ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__["default"], {
           doughTypes: pizzas,
-          setDoughType: setDoughType
+          setDoughType: setDoughType,
+          doughType: doughType
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
           animation: "border",
           variant: "danger"
-        }), ingredients ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickIngredients__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        }), ingredients && data ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickIngredients__WEBPACK_IMPORTED_MODULE_7__["default"], {
           setIngredients: setSelectedIngredients,
           ingredientList: ingredients,
           selectedIngredients: selectedIngredients
@@ -2502,24 +2525,15 @@ function Create() {
           style: {
             paddingTop: "50px"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
-            children: ["Total: $", doughPrice + ingredientsPrice]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
-            className: "text-danger",
-            style: name && doughType && selectedIngredients.length > 1 ? {
-              display: "none"
-            } : {
-              display: "block"
-            },
-            children: "All steps must be completed to continue"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+          children: [doughType ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
+            children: ["Total: $", doughType.price]
+          }) : "loading", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
             type: "button",
             className: "continue",
-            disabled: !name || !doughType || selectedIngredients.length == 1,
             onClick: function onClick() {
               return sendData();
             },
-            children: "Create!"
+            children: "Send"
           })]
         })]
       })]
@@ -2527,8 +2541,8 @@ function Create() {
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Create);
-react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Create, {}), document.getElementById("create"));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
+react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Edit, {}), document.getElementById("edit"));
 
 /***/ }),
 
@@ -2616,7 +2630,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -35295,7 +35309,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/js/create": 0,
+/******/ 			"/js/editOrder": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -35346,7 +35360,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/create.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/editOrder.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	

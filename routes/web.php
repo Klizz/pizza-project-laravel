@@ -19,8 +19,14 @@ Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 // RUTA PARA CREAR UNA NUEVA ORDEN
 Route::get('orders/create', [OrderController::class, 'create'])->name('orders.create');
 
+// RUTA PARA EDITAR LA ORDEN
+Route::get('/order/edit/{order}', [OrderController::class, 'edit'])->name('orders.edit');
+
+// RUTA PARA HACER UPDATE DE LA ORDEN
+Route::put('/order/edit/{order}', [OrderController::class, 'update'])->name('orders.update');
+
 // RUTA PARA CREAR UNA NUEVA ORDEN
-Route::get('orders/all', [OrderController::class, 'all'])->name('orders.all');
+Route::get('/orders/all', [OrderController::class, 'all'])->name('orders.all');
 
 // RUTA PARA POSTEAR EL FORMULARIO
 Route::post('/order/store', [OrderController::class, 'store'])->name('orders.store');

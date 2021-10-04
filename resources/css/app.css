@@ -66,6 +66,11 @@
     font-size: 1.4em;
     transition: 0.3s;
 }
+.continue:disabled:hover {
+    background-color: #FFF;
+    transition: 0.3s;
+    color: rgb(102, 102, 102);
+}
 .continue:hover {
     background-color: #B44418;
     transition: 0.3s;
@@ -88,4 +93,84 @@
 }
 .navbar a {
     color: white;
+}
+.nav-link:hover{
+    color: #000;
+}
+.col {
+    margin-bottom: 50px;
+    flex: 0 0 0%;
+}
+.btn-red {
+    color: #B44418;
+    background-color: #FFF;
+    border-color: #B44418;
+    border-radius: 0;
+    display: block;
+    margin-top: 20px;
+}
+.btn-red:hover {
+    color: #FFF;
+    background-color: #B44418;
+    border-color: #B44418;
+    border-radius: 0;
+}
+.btn-yellow {
+    color: #F1B42F;
+    background-color: #FFF;
+    border-color: #F1B42F;
+    border-radius: 0;
+    margin-top: 20px;
+}
+.btn-yellow:hover {
+    color: #FFF;
+    background-color: #F1B42F;
+    border-color: #F1B42F;
+    border-radius: 0;
+}
+.btn-green {
+    color: #6D6D04;
+    background-color: #FFF;
+    border-color: #6D6D04;
+    border-radius: 0;
+    margin-top: 20px;
+}
+.btn-green:hover {
+    color: #FFF;
+    background-color: #6D6D04;
+    border-color: #6D6D04;
+    border-radius: 0;
+}
+.bold {
+    font-weight: 600;
+}
+.font-primary-text {
+    color: #B44418;
+}
+.font-secondary-text {
+    color: #6D6D04;
+}
+.card-body {
+    font-size: 1.4em;
+}
+.card-body h4 {
+    margin-top: 30px;
+    font-size: 1.5em;
+}
+.large-card {
+    width: 70%;
+    margin: 100px auto;
+    padding: 20px;
+}
+.card-links {
+    width: 100%;
+}
+.btn-3-row {
+    width: 30%;
+    margin-right: 5%;
+    display: inline-block;
+    font-size: .8em;
+}
+.btn-3-row:last-child {
+    margin-right: 0;
 }
