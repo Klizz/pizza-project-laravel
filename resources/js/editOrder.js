@@ -61,7 +61,9 @@ function Edit() {
                 customer: name,
                 pizza_id: doughType.id,
                 ingredient_id: selectedIngredients,
-                removeElements: defaultIngredients.filter((x) => !selectedIngredients.includes(x)).map((x) => x.id)
+                removeElements: defaultIngredients
+                    .filter((x) => !selectedIngredients.includes(x))
+                    .map((x) => x.id),
             })
             .then((res) => {
                 window.location.href = `/orders/${res.data.id}`;
@@ -104,8 +106,18 @@ function Edit() {
                         className="section-content align-center"
                         style={{ paddingTop: "50px" }}
                     >
-                        {doughType ? (
-                            <h1>Total: ${doughType.price}</h1>
+                        {doughType && selectedIngredients ? (
+                            <h1>
+                                Total: $
+                                {doughType.price +
+                                    selectedIngredients.reduce(function (
+                                        acc,
+                                        curr
+                                    ) {
+                                        return acc + curr.price;
+                                    },
+                                    0)}
+                            </h1>
                         ) : (
                             "loading"
                         )}

@@ -2525,8 +2525,10 @@ function Edit() {
           style: {
             paddingTop: "50px"
           },
-          children: [doughType ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
-            children: ["Total: $", doughType.price]
+          children: [doughType && selectedIngredients ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
+            children: ["Total: $", doughType.price + selectedIngredients.reduce(function (acc, curr) {
+              return acc + curr.price;
+            }, 0)]
           }) : "loading", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
             type: "button",
             className: "continue",
