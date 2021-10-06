@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactDOM from "react-dom";
 import Header from "./components/Header";
-import NameComponent from "./components/Name";
 import PickDoughtype from "./components/PickDoughtype";
 import PickIngredients from "./components/PickIngredients";
 import Spinner from "react-bootstrap/Spinner";
@@ -71,7 +70,6 @@ function Create() {
             <div className="container">
                 <h1 className="title">Create your pizza</h1>
                 <form method="POST" action="/or">
-                    <NameComponent setName={setName} />
                     {pizzas ? (
                         <PickDoughtype
                             doughTypes={pizzas}
@@ -97,7 +95,6 @@ function Create() {
                         <span
                             className="text-danger"
                             style={
-                                name &&
                                 doughType &&
                                 selectedIngredients.length > 1
                                     ? { display: "none" }
@@ -110,7 +107,6 @@ function Create() {
                             type="button"
                             className="continue"
                             disabled={
-                                !name ||
                                 !doughType ||
                                 selectedIngredients.length == 1
                             }

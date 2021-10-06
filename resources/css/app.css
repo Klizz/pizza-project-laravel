@@ -25,17 +25,35 @@
     font-family: "Grand Hotel", cursive;
     font-weight: 600;
 }
+.navbar {
+    position: relative;
+}
+.nav-last {
+    position: absolute;
+    right: 20px;
+}
 .cta-btn {
     margin-top: 30px;
     background-color: transparent;
     border: 1px solid #fff;
+    color: #FFF;
     padding: 20px 30px;
     font-weight: 600;
-    font-size: 1.4em;
+    font-size: 1.6em;
     transition: 0.3s;
 }
 .cta-btn:hover {
     background-color: #FFF;
+    color: #000;
+    transition: 0.3s;
+}
+.cta-btn:disabled {
+    background-color: transparent;
+    color: rgb(58, 58, 58);
+}
+.cta-btn:hover:disabled {
+    background-color: transparent;
+    color: rgb(58, 58, 58);
     transition: 0.3s;
 }
 .title {
@@ -55,7 +73,11 @@
     padding: 30px;
     background-color: #f5f3f0;
 }
-
+.search-section {
+    padding: 0px 0px 50px;
+    width: 70%;
+    margin: auto;
+}
 .continue {
     margin-top: 30px;
     margin-bottom: 80px;
@@ -80,7 +102,10 @@
     width: 50%;
     margin: 0px auto;
 }
-
+.name-title {
+    font-size: 1.4em;
+    font-weight: 700;
+}
 .align-center {
     text-align: center;
 }

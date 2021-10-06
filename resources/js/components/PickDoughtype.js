@@ -15,7 +15,7 @@ const PickDoughtype = ({ doughTypes, setDoughType, doughType }) => {
                                             className="form-check-input"
                                             type="radio"
                                             name="doughtype"
-                                            defaultChecked={index === doughType.id - 1}
+                                            defaultChecked={doughType ? index === doughType.id - 1 : ''}
                                             onChange={() => setDoughType(item)}
                                         />
                                         <label

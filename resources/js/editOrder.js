@@ -79,12 +79,7 @@ function Edit() {
             <div className="container">
                 <h1 className="title">Edit order {currentOrder}</h1>
                 <form method="POST" action="/or">
-                    {data ? (
-                        <NameComponent setName={setName} defaultValue={name} />
-                    ) : (
-                        <Spinner />
-                    )}
-                    {setDoughType ? (
+                    {doughType ? (
                         <PickDoughtype
                             doughTypes={pizzas}
                             setDoughType={setDoughType}

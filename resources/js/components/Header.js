@@ -8,13 +8,22 @@ function Header() {
                 The Pizza Project
             </a>
             <ul class="navbar-nav mr-auto">
-      <li className="nav-item">
-        <a className="nav-link" href="/orders/all">See orders</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="/orders/create">Create order</a>
-      </li>
-    </ul>
+                <li className="nav-item">
+                    <a className="nav-link" href="/orders/all">
+                        See orders
+                    </a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/orders/create">
+                        Create order
+                    </a>
+                </li>
+                <li className="nav-item nav-last">
+                    <a className="nav-link" href="/orders/create">
+                        Log out
+                    </a>
+                </li>
+            </ul>
         </nav>
     );
 }

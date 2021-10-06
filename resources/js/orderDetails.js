@@ -5,7 +5,7 @@ import Spinner from "react-bootstrap/Spinner";
 import "../css/app.css";
 import Header from "./components/Header";
 
-function Details(props) {
+function Details() {
     const [data, setData] = useState(null);
     const [dataIngredients, setDataIngredients] = useState(null);
     const [dataPizza, setDataPizza] = useState(null);
@@ -13,7 +13,7 @@ function Details(props) {
     useEffect(() => {
         fetch("/orders")
             .then((response) => response.json())
-            .then((data) => setData(data));
+            .then((data) => setData(data), console.log(data));
     }, []);
     useEffect(() => {
         fetch("/ingredients")
@@ -55,7 +55,7 @@ function Details(props) {
                                     Customer:
                                 </h4>
                                 {
-                                    data.orders.filter((order) => {
+                                    data.allorders.filter((order) => {
                                         return (
                                             order.id === parseInt(currentOrder)
                                         );
@@ -68,7 +68,7 @@ function Details(props) {
                                         Total price:
                                     </h4>
                                     {"$" +
-                                        data.orders.filter((order) => {
+                                        data.allorders.filter((order) => {
                                             return (
                                                 order.id ===
                                                 parseInt(currentOrder)
@@ -82,7 +82,7 @@ function Details(props) {
                                     dataPizza.filter((item) => {
                                         return (
                                             item.id ===
-                                            data.orders.filter((order) => {
+                                            data.allorders.filter((order) => {
                                                 return (
                                                     order.id ===
                                                     parseInt(currentOrder)

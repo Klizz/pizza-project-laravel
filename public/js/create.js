@@ -2094,16 +2094,16 @@ function Header() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
       "class": "navbar-nav mr-auto",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-        "class": "nav-item",
+        className: "nav-item",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          "class": "nav-link",
+          className: "nav-link",
           href: "/orders/all",
           children: "See orders"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-        "class": "nav-item",
+        className: "nav-item",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          "class": "nav-link",
+          className: "nav-link",
           href: "/orders/create",
           children: "Create order"
         })
@@ -2113,53 +2113,6 @@ function Header() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
-
-/***/ }),
-
-/***/ "./resources/js/components/Name.js":
-/*!*****************************************!*\
-  !*** ./resources/js/components/Name.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function NameComponent(_ref) {
-  var setName = _ref.setName;
-  // const [name, setName] = useState();
-  // const onNameChange = (e) => {
-  //     setName(e.target.value);
-  // }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "form-section",
-      id: "name",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "section-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "section-title",
-          children: "Step 1: Write your name"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          onChange: function onChange(e) {
-            return setName(e.target.value);
-          }
-        })]
-      })
-    })
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NameComponent);
 
 /***/ }),
 
@@ -2182,7 +2135,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var PickDoughtype = function PickDoughtype(_ref) {
   var doughTypes = _ref.doughTypes,
-      setDoughType = _ref.setDoughType;
+      setDoughType = _ref.setDoughType,
+      doughType = _ref.doughType;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "form-section",
@@ -2200,6 +2154,7 @@ var PickDoughtype = function PickDoughtype(_ref) {
                 className: "form-check-input",
                 type: "radio",
                 name: "doughtype",
+                defaultChecked: doughType ? index === doughType.id - 1 : '',
                 onChange: function onChange() {
                   return setDoughType(item);
                 }
@@ -2243,7 +2198,8 @@ __webpack_require__.r(__webpack_exports__);
 var PickIngredients = function PickIngredients(_ref) {
   var setIngredients = _ref.setIngredients,
       ingredientList = _ref.ingredientList,
-      selectedIngredients = _ref.selectedIngredients;
+      selectedIngredients = _ref.selectedIngredients,
+      defaultSelect = _ref.defaultSelect;
   var ingredients = ingredientList;
 
   var onInputChange = function onInputChange(e, item) {
@@ -2273,6 +2229,9 @@ var PickIngredients = function PickIngredients(_ref) {
               type: "checkbox",
               value: item.name,
               id: item.name,
+              defaultChecked: selectedIngredients.find(function (i) {
+                return i.id === item.id;
+              }),
               onChange: function onChange(e) {
                 return onInputChange(e, item);
               }
@@ -2310,12 +2269,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Header */ "./resources/js/components/Header.js");
-/* harmony import */ var _components_Name__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Name */ "./resources/js/components/Name.js");
-/* harmony import */ var _components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/PickDoughtype */ "./resources/js/components/PickDoughtype.js");
-/* harmony import */ var _components_PickIngredients__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/PickIngredients */ "./resources/js/components/PickIngredients.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
-/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_PickDoughtype__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/PickDoughtype */ "./resources/js/components/PickDoughtype.js");
+/* harmony import */ var _components_PickIngredients__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/PickIngredients */ "./resources/js/components/PickIngredients.js");
+/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var _css_app_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../css/app.css */ "./resources/css/app.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2345,46 +2303,40 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function Create() {
   // DATOS DEL FORMULARIO
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
       _useState2 = _slicedToArray(_useState, 2),
-      name = _useState2[0],
-      setName = _useState2[1];
+      doughType = _useState2[0],
+      setDoughType = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(),
-      _useState4 = _slicedToArray(_useState3, 2),
-      doughType = _useState4[0],
-      setDoughType = _useState4[1];
-
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([{
     price: 0,
     id: 0
   }]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selectedIngredients = _useState4[0],
+      setSelectedIngredients = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      selectedIngredients = _useState6[0],
-      setSelectedIngredients = _useState6[1];
+      ingredients = _useState6[0],
+      setIngredients = _useState6[1];
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState8 = _slicedToArray(_useState7, 2),
-      ingredients = _useState8[0],
-      setIngredients = _useState8[1];
+      pizzas = _useState8[0],
+      setPizzas = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState10 = _slicedToArray(_useState9, 2),
-      pizzas = _useState10[0],
-      setPizzas = _useState10[1];
+      doughPrice = _useState10[0],
+      setDoughPrice = _useState10[1];
 
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
       _useState12 = _slicedToArray(_useState11, 2),
-      doughPrice = _useState12[0],
-      setDoughPrice = _useState12[1];
-
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
-      _useState14 = _slicedToArray(_useState13, 2),
-      ingredientsPrice = _useState14[0],
-      setIngredientsPrice = _useState14[1];
+      ingredientsPrice = _useState12[0],
+      setIngredientsPrice = _useState12[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var ingredientsURL = "/ingredients";
@@ -2440,7 +2392,7 @@ function Create() {
     }).reduce(function (prev, next) {
       return prev + next;
     })) : console.log("empty");
-  }, [doughType, selectedIngredients, setName]);
+  }, [doughType, selectedIngredients]);
 
   function sendData() {
     return _sendData.apply(this, arguments);
@@ -2453,7 +2405,6 @@ function Create() {
           switch (_context2.prev = _context2.next) {
             case 0:
               return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_2___default().post("/order/store", {
-                customer: name,
                 pizza_id: doughType.id,
                 ingredient_id: selectedIngredients
               }).then(function (res) {
@@ -2473,49 +2424,47 @@ function Create() {
     return _sendData.apply(this, arguments);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
         className: "title",
         children: "Create your pizza"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
         method: "POST",
         action: "/or",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Name__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          setName: setName
-        }), pizzas ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [pizzas ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_5__["default"], {
           doughTypes: pizzas,
           setDoughType: setDoughType
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_9__["default"], {
           animation: "border",
           variant: "danger"
-        }), ingredients ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickIngredients__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        }), ingredients ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_PickIngredients__WEBPACK_IMPORTED_MODULE_6__["default"], {
           setIngredients: setSelectedIngredients,
           ingredientList: ingredients,
           selectedIngredients: selectedIngredients
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_9__["default"], {
           animation: "border",
           variant: "danger"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "section-content align-center",
           style: {
             paddingTop: "50px"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("h1", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h1", {
             children: ["Total: $", doughPrice + ingredientsPrice]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
             className: "text-danger",
-            style: name && doughType && selectedIngredients.length > 1 ? {
+            style: doughType && selectedIngredients.length > 1 ? {
               display: "none"
             } : {
               display: "block"
             },
             children: "All steps must be completed to continue"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
             type: "button",
             className: "continue",
-            disabled: !name || !doughType || selectedIngredients.length == 1,
+            disabled: !doughType || selectedIngredients.length === 1,
             onClick: function onClick() {
               return sendData();
             },
@@ -2528,7 +2477,7 @@ function Create() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Create);
-react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Create, {}), document.getElementById("create"));
+react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(Create, {}), document.getElementById("create"));
 
 /***/ }),
 
@@ -2616,7 +2565,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.1em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n.name-title {\n    font-size: 1.4em;\n    font-weight: 700;\n}\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

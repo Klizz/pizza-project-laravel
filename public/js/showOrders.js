@@ -43,6 +43,13 @@ function Header() {
           href: "/orders/create",
           children: "Create order"
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+        className: "nav-item nav-last",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          className: "nav-link",
+          href: "/orders/create",
+          children: "Log out"
+        })
       })]
     })]
   });
@@ -152,25 +159,61 @@ function Orders() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
-      setData = _useState2[1]; // const [error, setError] = useState(null);
+      setData = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      searchTerm = _useState4[0],
+      setSearchTerm = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetch("/orders").then(function (response) {
       return response.json();
     }).then(function (data) {
-      return setData(data);
+      return setData(data.orders);
     });
   }, []);
+
+  function search() {
+    fetch("/orders").then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setData(data.allorders.filter(function (i) {
+        return i.customer.toLowerCase() === searchTerm.toLowerCase();
+      }));
+    });
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "container",
       style: {
         paddingTop: "100px"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "search-section",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          "class": "d-flex",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            "class": "form-control me-2",
+            type: "search",
+            placeholder: "Search order by customer name",
+            onChange: function onChange(e) {
+              return setSearchTerm(e.target.value);
+            },
+            "aria-label": "Search"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            "class": "btn btn-outline-success",
+            disabled: !searchTerm,
+            onClick: function onClick() {
+              return search();
+            },
+            children: "Search"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "row",
-        children: data ? data.orders.map(function (item, index) {
+        children: data ? data.map(function (item, index) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
             className: "col",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_OrderCard__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -183,7 +226,7 @@ function Orders() {
           animation: "border",
           variant: "danger"
         })
-      })
+      })]
     })]
   });
 }
@@ -277,7 +320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.navbar {\n    position: relative;\n}\n.nav-last {\n    position: absolute;\n    right: 20px;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    color: #FFF;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.6em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    color: #000;\n    transition: 0.3s;\n}\n.cta-btn:disabled {\n    background-color: transparent;\n    color: rgb(58, 58, 58);\n}\n.cta-btn:hover:disabled {\n    background-color: transparent;\n    color: rgb(58, 58, 58);\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n.search-section {\n    padding: 0px 0px 50px;\n    width: 70%;\n    margin: auto;\n}\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n.name-title {\n    font-size: 1.4em;\n    font-weight: 700;\n}\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

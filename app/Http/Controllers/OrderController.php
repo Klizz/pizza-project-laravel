@@ -7,32 +7,44 @@ use App\Models\Pizza;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $ingredients = OrderPizzaIngredient::all();
         $pizzas = Pizza::all();
-        $orders = Order::all();
+        $allorders = Order::all();
+
+        $orders = DB::table('orders')
+        ->where('customer', '=', $request->session()->get('user'))
+        ->get();
 
         return response()->json([
-            'pizzas' => $pizzas,
             'orders' => $orders,
+            'allorders' => $allorders,
+            'pizzas' => $pizzas,
             'ingredients' => $ingredients,
         ]);
     }
-    public function create() { 
+
+    public function create(Request $request) { 
         return view('orders.create');
     }
+
     public function edit(Order $order) { 
         return view('orders.edit', compact('order'));
     }
 
     public function store(Request $request) { 
-        
         $order = new Order();
 
-        $order->customer = $request->customer;
+        if ($request->session()->has('user')) {
+            // $user = $request->session()->get('user');
+            $order->customer = $request->session()->get('user');
+        } else {
+            $order->customer = 'no user';
+        }
         $order->pizza_id = $request->pizza_id;
         $pizza = Pizza::find($request->pizza_id);
         $pizza_ingredients = $request->ingredient_id;
@@ -52,9 +64,9 @@ class OrderController extends Controller
         }
         return response()->json($order);
     }
+
     public function update(Order $order, Request $request) { 
 
-        $order->customer = $request->customer;
         $order->pizza_id = $request->pizza_id;
         $pizza = Pizza::find($request->pizza_id);
         $pizza_ingredients = $request->ingredient_id;
@@ -77,11 +89,6 @@ class OrderController extends Controller
         return response()->json($order);
     }
     public function show(Order $order, Request $request) {
-        // $pizza = $order->pizza;
-        // $ingredients = $order->ingredients;
-        // return response()->json($order);
-        // return view('orders.show', compact('order'));
-
         if ($request->wantsJson()) {
             $pizza = $order->pizza;
             $ingredients = $order->ingredients;
@@ -90,6 +97,7 @@ class OrderController extends Controller
             return view('orders.show', compact('order'));
         }
     }
+
     public function all(Order $orders) { 
         return view('orders.all', compact('orders'));
     }
