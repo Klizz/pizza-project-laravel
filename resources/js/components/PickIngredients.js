@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PizzaIngredientSelector from "./PizzaIngredientSelector.js";
 
 const PickIngredients = ({setIngredients, ingredientList, selectedIngredients, defaultSelect}) => {
     const ingredients = ingredientList
@@ -13,8 +14,11 @@ const PickIngredients = ({setIngredients, ingredientList, selectedIngredients, d
 
     return (
         <React.Fragment>
-            <div className="form-section" id="ingredients">
-            <div className="section-content">
+            <div className="form-section center-items" style={{ display: 'flex' }} id="ingredients">
+            <PizzaIngredientSelector 
+            selectedIngredients={selectedIngredients}
+             />
+            <div className="section-content-half">
             <h3 className="section-title">Step 3: Choose your toppings</h3>
                 {ingredients.map((item, index) => {
                           return (

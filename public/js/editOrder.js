@@ -2107,6 +2107,13 @@ function Header() {
           href: "/orders/create",
           children: "Create order"
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+        className: "nav-item nav-last",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          className: "nav-link",
+          href: "/orders/create",
+          children: "Log out"
+        })
       })]
     })]
   });
@@ -2136,19 +2143,18 @@ __webpack_require__.r(__webpack_exports__);
 function NameComponent(_ref) {
   var setName = _ref.setName,
       defaultValue = _ref.defaultValue;
-  // const [name, setName] = useState();
-  // const onNameChange = (e) => {
-  //     setName(e.target.value);
-  // }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "form-section",
+      style: {
+        backgroundColor: 'transparent'
+      },
       id: "name",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "section-content",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "section-title",
-          children: "Step 1: Write your name"
+          className: "name-title",
+          children: "Write your name to continue"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           type: "text",
           defaultValue: defaultValue,
@@ -2203,7 +2209,7 @@ var PickDoughtype = function PickDoughtype(_ref) {
                 className: "form-check-input",
                 type: "radio",
                 name: "doughtype",
-                defaultChecked: index === doughType.id - 1,
+                defaultChecked: doughType ? index === doughType.id - 1 : '',
                 onChange: function onChange() {
                   return setDoughType(item);
                 }
@@ -2239,7 +2245,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _PizzaIngredientSelector_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PizzaIngredientSelector.js */ "./resources/js/components/PizzaIngredientSelector.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -2261,19 +2269,24 @@ var PickIngredients = function PickIngredients(_ref) {
     }
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "form-section",
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "form-section center-items",
+      style: {
+        display: 'flex'
+      },
       id: "ingredients",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "section-content",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_PizzaIngredientSelector_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        selectedIngredients: selectedIngredients
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "section-content-half",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
           className: "section-title",
           children: "Step 3: Choose your toppings"
         }), ingredients.map(function (item, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "form-check",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
               className: "form-check-input",
               type: "checkbox",
               value: item.name,
@@ -2284,19 +2297,58 @@ var PickIngredients = function PickIngredients(_ref) {
               onChange: function onChange(e) {
                 return onInputChange(e, item);
               }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
               className: "form-check-label",
               htmlFor: item.name,
               children: "".concat(item.name, " ($").concat(item.price, ")")
             })]
           }, index);
         })]
-      })
+      })]
     })
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PickIngredients);
+
+/***/ }),
+
+/***/ "./resources/js/components/PizzaIngredientSelector.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/PizzaIngredientSelector.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function PizzaIngredientSelector(selectedIngredients) {
+  var ingredients = selectedIngredients.selectedIngredients;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "section-content-half center-items",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+      src: "/img/ingredient-select/pizza-base.png",
+      height: "430px",
+      width: "430px"
+    }), ingredients ? ingredients.map(function (i, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: "/img/ingredient-select/".concat(i.name ? i.name : "transparent", ".png"),
+        className: "ingredient-img"
+      }, index);
+    }) : null]
+  });
+}
+
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PizzaIngredientSelector);
 
 /***/ }),
 
@@ -2503,10 +2555,7 @@ function Edit() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
         method: "POST",
         action: "/or",
-        children: [data ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Name__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          setName: setName,
-          defaultValue: name
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {}), setDoughType ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        children: [doughType ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PickDoughtype__WEBPACK_IMPORTED_MODULE_6__["default"], {
           doughTypes: pizzas,
           setDoughType: setDoughType,
           doughType: doughType
@@ -2632,7 +2681,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".hero {\n    height: 100vh;\n    display: flex;\n    padding-left: 30px;\n    background-image: linear-gradient(\n            to right,\n            rgba(180, 68, 24, 0.8),\n            rgb(241, 180, 47, 0.8)\n        ),\n        url(https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?cs=srgb&dl=pexels-kristina-paukshtite-1146760.jpg&fm=jpg);\n    background-size: cover;\n    background-position: top;\n    background-repeat: no-repeat;\n    background-attachment: fixed;\n}\n.hero-inner {\n    width: 50%;\n    margin: auto;\n    text-align: center;\n}\n.main-line {\n    display: block;\n    color: #fff;\n    font-size: 7em;\n    font-family: \"Grand Hotel\", cursive;\n    font-weight: 600;\n}\n.navbar {\n    position: relative;\n}\n.nav-last {\n    position: absolute;\n    right: 20px;\n}\n.cta-btn {\n    margin-top: 30px;\n    background-color: transparent;\n    border: 1px solid #fff;\n    color: #FFF;\n    padding: 20px 30px;\n    font-weight: 600;\n    font-size: 1.6em;\n    transition: 0.3s;\n}\n.cta-btn:hover {\n    background-color: #FFF;\n    color: #000;\n    transition: 0.3s;\n}\n.cta-btn:disabled {\n    background-color: transparent;\n    color: rgb(58, 58, 58);\n}\n.cta-btn:hover:disabled {\n    background-color: transparent;\n    color: rgb(58, 58, 58);\n    transition: 0.3s;\n}\n.title {\n    margin-top: 100px;\n    text-align: center;\n    font-size: 4.5em;\n    font-weight: 600;\n    color:#6D6D04;\n}\n.section-title {\n    font-weight: 600;\n    color: #B44418;\n}\n.form-section {\n    margin-top: 30px;\n    font-size: 1.4em;\n    padding: 30px;\n    background-color: #f5f3f0;\n}\n.search-section {\n    padding: 0px 0px 50px;\n    width: 70%;\n    margin: auto;\n}\n.continue {\n    margin-top: 30px;\n    margin-bottom: 80px;\n    background-color: transparent;\n    border: 1px solid #B44418;\n    padding: 20px 100px;\n    font-weight: 600;\n    font-size: 1.4em;\n    transition: 0.3s;\n}\n.continue:disabled:hover {\n    background-color: #FFF;\n    transition: 0.3s;\n    color: rgb(102, 102, 102);\n}\n.continue:hover {\n    background-color: #B44418;\n    transition: 0.3s;\n    color: #FFF;\n}\n.section-content {\n    width: 50%;\n    margin: 0px auto;\n}\n.name-title {\n    font-size: 1.4em;\n    font-weight: 700;\n}\n.align-center {\n    text-align: center;\n}\n\n.navbar-brand {\n    margin-left: 30px;\n}\n.navbar {\n    background-color: #B44418 !important;\n}\n.navbar a {\n    color: white;\n}\n.nav-link:hover{\n    color: #000;\n}\n.col {\n    margin-bottom: 50px;\n    flex: 0 0 0%;\n}\n.btn-red {\n    color: #B44418;\n    background-color: #FFF;\n    border-color: #B44418;\n    border-radius: 0;\n    display: block;\n    margin-top: 20px;\n}\n.btn-red:hover {\n    color: #FFF;\n    background-color: #B44418;\n    border-color: #B44418;\n    border-radius: 0;\n}\n.btn-yellow {\n    color: #F1B42F;\n    background-color: #FFF;\n    border-color: #F1B42F;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-yellow:hover {\n    color: #FFF;\n    background-color: #F1B42F;\n    border-color: #F1B42F;\n    border-radius: 0;\n}\n.btn-green {\n    color: #6D6D04;\n    background-color: #FFF;\n    border-color: #6D6D04;\n    border-radius: 0;\n    margin-top: 20px;\n}\n.btn-green:hover {\n    color: #FFF;\n    background-color: #6D6D04;\n    border-color: #6D6D04;\n    border-radius: 0;\n}\n.bold {\n    font-weight: 600;\n}\n.font-primary-text {\n    color: #B44418;\n}\n.font-secondary-text {\n    color: #6D6D04;\n}\n.card-body {\n    font-size: 1.4em;\n}\n.card-body h4 {\n    margin-top: 30px;\n    font-size: 1.5em;\n}\n.large-card {\n    width: 70%;\n    margin: 100px auto;\n    padding: 20px;\n}\n.card-links {\n    width: 100%;\n}\n.btn-3-row {\n    width: 30%;\n    margin-right: 5%;\n    display: inline-block;\n    font-size: .8em;\n}\n.btn-3-row:last-child {\n    margin-right: 0;\n}\n.section-content-half {\n    width: 40%;\n    padding: 30px;\n}\n.center-items {\n    display: flex;\n    justify-content: center;\n}\n.ingredient-img {\n    height: 430px;\n    width: 430px;\n    z-index: 1;\n    margin-left: -430px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -1,3 +1,4 @@
+
 .hero {
     height: 100vh;
     display: flex;
@@ -198,4 +199,18 @@
 }
 .btn-3-row:last-child {
     margin-right: 0;
+}
+.section-content-half {
+    width: 40%;
+    padding: 30px;
+}
+.center-items {
+    display: flex;
+    justify-content: center;
+}
+.ingredient-img {
+    height: 430px;
+    width: 430px;
+    z-index: 1;
+    margin-left: -430px;
 }
